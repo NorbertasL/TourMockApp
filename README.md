@@ -26,7 +26,7 @@ TODO:
 
 - [x] Create dummy data
 
-- [ ] CALCULATE:
+- [x] CALCULATE:
 	- [x] Total income from each guide for all tours
 	- [x] Overall Profit / Loss made by the company
 
