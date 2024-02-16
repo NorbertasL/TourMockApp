@@ -268,14 +268,19 @@ def make_dummy_data() -> bool:#a way to populate the datbles
         return True
     return False
  
-def print_guides_earnings():
+def get_guides_earnings():
+    '''
+    returns output_str, walk_costs
+    '''
     #Based on the completed walks, calculate and display the Basic Pay, Bonus Pay and Total Pay
     #earned by each Guide.
     output_str = []
+    walk_costs = []
     for guide in guides_data:# looping trough all the guides
         hourly_earning:float = 0
         walker_earning:float = 0
         #getting all hours worked by the guide and all people guided
+        
         for walk in walks_data:
             if walk[1] == guide[0]: # walk[1] = guide id of the guide,  guide[0] = guide id
                 duratio:int = 0
@@ -285,11 +290,26 @@ def print_guides_earnings():
                         break # dont need to keep looking
                 hourly_earning += duratio*float(guide[3]) # duratio = #h for the walk, guide[2] = guide hourly rate
                 walker_earning += int(walk[3])*float(guide[3]) # walk[3] = number of walkers, guide[3] = rate per walker
+                walk_costs.append([walk[0], walk[2], walk[3] ,hourly_earning + walker_earning]) # saving this for company earning calc
         output_str.append(f"{guide[1]} has earned hourly:{hourly_earning}, plus {walker_earning} for walkers for a total: {hourly_earning+walker_earning}")
-    print_rows(output_str) # printing all earnings
+    return output_str, walk_costs
+
                 
 def print_company_earnings():
-    pass    
+    #The overall Profit / Loss made by the company for these completed walks
+    _, walk_costs = get_guides_earnings() # _ using to discard of the output_str, we only care about the costs
+    output_string = []
+    for walk in walk_costs:
+        tour_price:float = 0;
+        for tour in tours_data:
+            if tour[0] == walk[1]:
+                tour_price =  float(tour[3]) 
+                break
+        output_string.append(f"WalkID:{walk[0]}, profit is:{tour_price*int(walk[2]) - walk[3]}")
+        
+    print_rows(output_string)
+
+
         
 def print_rows(data_list):
     for data in data_list:
@@ -416,7 +436,8 @@ def user_interface():
         user_input = input("Selection:")
     
         if(user_input == "1"): # keeping input as string and comparing to string
-            print_guides_earnings()
+            output_str, _ = get_guides_earnings() # _ var just means we are discarding the walk_cost values
+            print_rows(output_str)
         elif(user_input == "2"):
             print_company_earnings()
         elif(user_input == "3"):
@@ -448,8 +469,8 @@ if(not make_dummy_data()):
     read_guides_data()
     read_walks_data()
 
-#user_interface()
-print_guides_earnings()
+user_interface()
+
 print("Application is finished!!!")
 
 

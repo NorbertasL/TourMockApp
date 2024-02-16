@@ -27,7 +27,6 @@ TODO:
 - [x] Create dummy data
 
 - [ ] CALCULATE:
-    - [ ] Pay earned by each guide per tour
-	- [ ] Total income from each guide for all tours
-	- [ ] Overall Profit / Loss made by the company
+	- [x] Total income from each guide for all tours
+	- [-] Overall Profit / Loss made by the company
 
