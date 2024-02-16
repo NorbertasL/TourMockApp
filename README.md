@@ -14,12 +14,10 @@ TODO:
 - [ ] UPDATE :
 	- [x] Tours
 	- [ ] Guides
-	- [ ] Completed Walks
 
 - [ ] DELETE from :
-	- [ ] Tours
+	- [X] Tours
 	- [ ] Guides
-	- [ ] Completed Walks
 
 - [ ] Create dummy data
 
