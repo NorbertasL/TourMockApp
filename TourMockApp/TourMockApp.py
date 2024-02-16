@@ -267,7 +267,29 @@ def make_dummy_data() -> bool:#a way to populate the datbles
         print(f"{TOURS_TEST_DATA} tour data generated \n {GUIDES_TEST_DATA} guides data generated \n {WALKS_TEST_DATA} walks data generated")
         return True
     return False
-        
+ 
+def print_guides_earnings():
+    #Based on the completed walks, calculate and display the Basic Pay, Bonus Pay and Total Pay
+    #earned by each Guide.
+    output_str = []
+    for guide in guides_data:# looping trough all the guides
+        hourly_earning:float = 0
+        walker_earning:float = 0
+        #getting all hours worked by the guide and all people guided
+        for walk in walks_data:
+            if walk[1] == guide[0]: # walk[1] = guide id of the guide,  guide[0] = guide id
+                duratio:int = 0
+                for tour in tours_data: # have to find the tour duration
+                    if walk[2] == tour[0]: # walk[2] = tourID, tour[0] = tourID
+                        duratio = int(tour[4]) # tour[4] us the duration
+                        break # dont need to keep looking
+                hourly_earning += duratio*float(guide[3]) # duratio = #h for the walk, guide[2] = guide hourly rate
+                walker_earning += int(walk[3])*float(guide[3]) # walk[3] = number of walkers, guide[3] = rate per walker
+        output_str.append(f"{guide[1]} has earned hourly:{hourly_earning}, plus {walker_earning} for walkers for a total: {hourly_earning+walker_earning}")
+    print_rows(output_str) # printing all earnings
+                
+def print_company_earnings():
+    pass    
         
 def print_rows(data_list):
     for data in data_list:
@@ -318,7 +340,7 @@ def user_interface():
                     
                 
                 pass
-            def delete_guide_interface(): #TODO
+            def delete_guide_interface():
                 #
                 print_rows(guides_data)
                 guide_id = input("Enter GuideID to delete:")
@@ -349,11 +371,7 @@ def user_interface():
                     return
                 else:
                     print("Unknown input!")
-            # View Guides
-            # Add new Guides
-            # Delete Guides
-            # Update Guides
-            pass
+
         def interf_table_walks():
             while(True):
                 print("1: View all walks data")
@@ -390,8 +408,21 @@ def user_interface():
                 return # will go back 1 to previous menu
             else:
                 print("Unknown input!")
-    def user_interface_calculations():
-        pass
+    def user_interface_calculations(): #TODO
+        print("1: For Guide Earnings")
+        print("2: For Company Earnings per walk")
+        print("3: Go back in menu")
+        
+        user_input = input("Selection:")
+    
+        if(user_input == "1"): # keeping input as string and comparing to string
+            print_guides_earnings()
+        elif(user_input == "2"):
+            print_company_earnings()
+        elif(user_input == "3"):
+            return # will go back 1 to previous menu
+        else:
+            print("Unknown input!")
     
     while(True):
         print("1: For Tables")
@@ -417,8 +448,8 @@ if(not make_dummy_data()):
     read_guides_data()
     read_walks_data()
 
-user_interface()
-
+#user_interface()
+print_guides_earnings()
 print("Application is finished!!!")
 
 
