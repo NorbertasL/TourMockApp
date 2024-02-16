@@ -11,7 +11,7 @@ GUIDES_DATA_PATH: str = "Guides.csv"
 GUIDES_HEADERS:list[str] = ["GuideID", "Name", "Basic Rate(Hourly)", "Rate per Walker"]
 #Dummy Data
 GUIDES_TEST_DATA = [["Guide7", "Barbara", "12.50", "1.25"], ["Guide72", "Eddie", "15.00", "2"]]
-tours_data = []
+guides_data = []
 
 
 
@@ -78,8 +78,22 @@ def read_tour_data():
 def read_guides_data():
     '''
     will read all the data from Guidess.CSV into memory
+
     '''
-    pass
+    #had a bug where the data was duplicating 
+    guides_data.clear() ## purgin all old data
+    
+    try:
+        with open(GUIDES_DATA_PATH, "r") as file:
+            lines = file.readlines()[1:]#skipping headers
+        for line in lines:
+            
+            # lets ignore empy lines
+            if line != "\n":
+                guides_data.append(line.split(","))
+    except Exception as ex:
+        print(ex)
+    
         
 # WE DONT NEED update_tour_data I MISSREAD THE TASK
 # def update_tour_data(id_to_update: str, index_to_update: int, value_to_add: str):
@@ -116,6 +130,8 @@ def read_guides_data():
     
 
 #write_tours_data(TOURS_TEST_DATA)
-write_guides_data(GUIDES_TEST_DATA)
+#write_guides_data(GUIDES_TEST_DATA)
+read_guides_data()
+print(guides_data)
 
 
