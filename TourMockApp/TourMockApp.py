@@ -93,6 +93,24 @@ def read_guides_data():
                 guides_data.append(line.split(","))
     except Exception as ex:
         print(ex)
+
+def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: str):
+    '''
+    Updates guides data
+    id_to_update = the unique id of the tour
+    index_to_update = the field u want to update 
+    0 = "GuideID", 
+    1 = "Name", 
+    2 = "Basic Rate(Hourly)", 
+    3 = "Rate per Walker"
+    '''
+    for line in guides_data:
+        if line[0] == id_to_update: # searching for the ID
+            line[index_to_update] = value_to_add #setting the new value
+            break # only updating the first instance of line
+        
+    write_guides_data(guides_data) # since we update a line we need re-write all the data to the CSV file
+    read_guides_data() # re-reading data so its updated
     
         
 # WE DONT NEED update_tour_data I MISSREAD THE TASK
@@ -132,6 +150,8 @@ def read_guides_data():
 #write_tours_data(TOURS_TEST_DATA)
 #write_guides_data(GUIDES_TEST_DATA)
 read_guides_data()
+print(guides_data)
+update_guides_data("Guide7", 1, "Bob")
 print(guides_data)
 
 

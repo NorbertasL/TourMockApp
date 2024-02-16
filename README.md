@@ -13,7 +13,7 @@ TODO:
 
 - [ ] READ From:
 	- [x] Tours
-	- [ ] Guides
+	- [x] Guides
 	- [ ] Completed Walks
 
 - [ ] UPDATE :
