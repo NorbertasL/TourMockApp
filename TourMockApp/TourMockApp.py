@@ -35,13 +35,14 @@ def write_tours_data(data: list[list[str]]):
         temp.append(",".join(elements)) # LINE DATA
         
         #fix for extra spaces
-        if(temp[-2:]) != "\n":
-            temp+="\n"
+        if temp[-1][-1:] != "\n":
+            temp[-1]+="\n"
     try:
         with open(TOUR_DATA_PATH, "w") as file:
             file.writelines(temp)
     except Exception as ex:
         print(ex)
+    read_tour_data() # re-reading data so its updated
         
 
 def write_guides_data(data: list[list[str]]):
@@ -54,13 +55,14 @@ def write_guides_data(data: list[list[str]]):
         temp.append(",".join(elements)) # LINE DATA
         
         #fix for extra spaces
-        if(temp[-2:]) != "\n":
-            temp+="\n"
+        if temp[-1][-1:] != "\n":
+            temp[-1]+="\n"
     try:
         with open(GUIDES_DATA_PATH, "w") as file:
             file.writelines(temp)
     except Exception as ex:
         print(ex)
+    read_guides_data() # re-reading data so its updated
         
 def write_walks_data(data: list[list[str]]):
     '''
@@ -72,13 +74,14 @@ def write_walks_data(data: list[list[str]]):
         temp.append(",".join(elements)) # LINE DATA
         
         #fix for extra spaces
-        if(temp[-2:]) != "\n":
-            temp+="\n"
+        if temp[-1][-1:] != "\n":
+            temp[-1]+="\n"
     try:
         with open(WALKS_DATA_PATH, "w") as file:
             file.writelines(temp)
     except Exception as ex:
         print(ex)
+    read_walks_data() # re-reading data so its updated
  
 def read_tour_data():
     '''
@@ -136,6 +139,22 @@ def read_walks_data():
                 walks_data.append(line.split(","))
     except Exception as ex:
         print(ex)
+        
+def insert_tour_data():
+    print("insert_tour_data")
+    temp: list[str] = []
+    #DANGER , not doing data checking 
+    temp.append(input("TourID:"))
+    temp.append(input("Destination:"))
+    temp.append(input("Duration:"))
+    temp.append(input("Price per Person:"))
+    temp.append(input("Min # Walkers:"))
+    temp.append(input("Max # Walkers:"))
+    
+    tours_data.append(temp)
+    write_tours_data(tours_data)#updating CSV
+    
+    
 
 def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: str):
     '''
@@ -153,7 +172,7 @@ def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: st
             break # only updating the first instance of line
         
     write_guides_data(guides_data) # since we update a line we need re-write all the data to the CSV file
-    read_guides_data() # re-reading data so its updated
+   
     
 def delete_guide_data(id_to_delete:str):
     '''
@@ -164,7 +183,6 @@ def delete_guide_data(id_to_delete:str):
             del(guides_data[index])# we found the id so we delete this line
             break # only delete the first instance of line
     write_guides_data(guides_data) # since we deleted a line we need re-write all the data to the CSV file
-    read_guides_data() # re-reading data so its updated
     
         
 # WE DONT NEED update_tour_data I MISSREAD THE TASK
@@ -210,10 +228,15 @@ write_walks_data(WALKS_TEST_DATA)
 # innitial table reading 
 # read_guides_data()
 # read_tour_data()
-read_walks_data()
 
+print(tours_data)
 
+insert_tour_data()
+
+print(tours_data)
+print(guides_data)
 print(walks_data)
+
 
 # print(guides_data)
 # input()
