@@ -9,12 +9,12 @@ TODO:
  - [ ] WRITE to:
 	- [x] Tours
 	- [x] Guides
-	- [-] Completed Walk
+	- [x] Completed Walk
 
 - [ ] READ From:
 	- [x] Tours
 	- [x] Guides
-	- [ ] Completed Walks
+	- [-] Completed Walks
 
 - [ ] UPDATE :
 	- [x] Tours

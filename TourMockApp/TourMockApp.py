@@ -117,6 +117,25 @@ def read_guides_data():
                 guides_data.append(line.split(","))
     except Exception as ex:
         print(ex)
+        
+def read_walks_data():
+    '''
+    will read all the data from Walks.CSV into memory
+    '''
+    
+    #had a bug where the data was duplicating 
+    walks_data.clear() ## purgin all old data
+    
+    try:
+        with open(WALKS_DATA_PATH, "r") as file:
+            lines = file.readlines()[1:]#skipping headers
+        for line in lines:
+            
+            # lets ignore empy lines
+            if line != "\n":
+                walks_data.append(line.split(","))
+    except Exception as ex:
+        print(ex)
 
 def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: str):
     '''
@@ -191,9 +210,10 @@ write_walks_data(WALKS_TEST_DATA)
 # innitial table reading 
 # read_guides_data()
 # read_tour_data()
+read_walks_data()
 
 
-
+print(walks_data)
 
 # print(guides_data)
 # input()
