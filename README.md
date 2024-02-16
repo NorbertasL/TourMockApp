@@ -9,7 +9,7 @@ TODO:
  - [ ] WRITE to:
 	- [x] Tours
 	- [x] Guides
-	- [ ] Completed Walk
+	- [-] Completed Walk
 
 - [ ] READ From:
 	- [x] Tours
@@ -21,7 +21,7 @@ TODO:
 	- [x] Guides
 
 - [ ] DELETE from :
-	- [X] Tours
+	- [x] Tours
 	- [x] Guides
 
 - [ ] Create dummy data

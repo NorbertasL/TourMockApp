@@ -13,6 +13,12 @@ GUIDES_HEADERS:list[str] = ["GuideID", "Name", "Basic Rate(Hourly)", "Rate per W
 GUIDES_TEST_DATA = [["Guide7", "Barbara", "12.50", "1.25"], ["Guide72", "Eddie", "15.00", "2"]]
 guides_data = []
 
+WALKS_DATA_PATH: str = "Walks.csv"
+WALKS_HEADERS:list[str] = ["WalkID", "GuideID", "TourID", "# Walkers"]
+#Dummy Data
+WALKS_TEST_DATA = [["Walk23", "Guide71", "Tour1", "10"], ["Walk24", "Guide7", "Tour2", "8"]]
+walks_data = []
+
 
 
 
@@ -52,6 +58,24 @@ def write_guides_data(data: list[list[str]]):
             temp+="\n"
     try:
         with open(GUIDES_DATA_PATH, "w") as file:
+            file.writelines(temp)
+    except Exception as ex:
+        print(ex)
+        
+def write_walks_data(data: list[list[str]]):
+    '''
+    writes data(list of list with str elements) to CSV file+adds headers
+    '''
+    temp:list[str] = []
+    temp.append(",".join(WALKS_HEADERS)+"\n") # HEADERS
+    for elements in data:
+        temp.append(",".join(elements)) # LINE DATA
+        
+        #fix for extra spaces
+        if(temp[-2:]) != "\n":
+            temp+="\n"
+    try:
+        with open(WALKS_DATA_PATH, "w") as file:
             file.writelines(temp)
     except Exception as ex:
         print(ex)
@@ -157,24 +181,29 @@ def delete_guide_data(id_to_delete:str):
 #     write_tours_data(TOURS_DATA) # since we deleted a line we need re-write all the data to the CSV file
 #     read_tour_data() # re-reading data so its updated
 
-
+#Generating dummy data
 write_tours_data(TOURS_TEST_DATA)
-write_guides_data(GUIDES_TEST_DATA)  
+write_guides_data(GUIDES_TEST_DATA)
+write_walks_data(WALKS_TEST_DATA)
+
+
+
 # innitial table reading 
-read_guides_data()
-read_tour_data()
+# read_guides_data()
+# read_tour_data()
 
 
 
-print(guides_data)
-input()
-update_guides_data("Guide7", 1, "Steve")
-print(guides_data)
-input()
-delete_guide_data("Guide7")
-print(guides_data)
-input()
-delete_guide_data("Guide72")
-print(guides_data)
+
+# print(guides_data)
+# input()
+# update_guides_data("Guide7", 1, "Steve")
+# print(guides_data)
+# input()
+# delete_guide_data("Guide7")
+# print(guides_data)
+# input()
+# delete_guide_data("Guide72")
+# print(guides_data)
 
 
