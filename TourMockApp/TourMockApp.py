@@ -319,7 +319,12 @@ def user_interface():
                 
                 pass
             def delete_guide_interface(): #TODO
-                pass
+                #
+                print_rows(guides_data)
+                guide_id = input("Enter GuideID to delete:")
+                delete_guide_data(guide_id) # not checking if valid
+                return # going back
+            
             while(True):
                 print("1: View all Guide data")
                 print("2: Add new Guide")
