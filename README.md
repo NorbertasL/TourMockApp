@@ -28,5 +28,5 @@ TODO:
 
 - [ ] CALCULATE:
 	- [x] Total income from each guide for all tours
-	- [-] Overall Profit / Loss made by the company
+	- [x] Overall Profit / Loss made by the company
 
