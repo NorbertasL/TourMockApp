@@ -18,11 +18,11 @@ TODO:
 
 - [ ] UPDATE :
 	- [x] Tours
-	- [ ] Guides
+	- [x] Guides
 
 - [ ] DELETE from :
 	- [X] Tours
-	- [ ] Guides
+	- [x] Guides
 
 - [ ] Create dummy data
 

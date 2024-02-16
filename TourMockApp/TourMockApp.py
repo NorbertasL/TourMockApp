@@ -112,6 +112,17 @@ def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: st
     write_guides_data(guides_data) # since we update a line we need re-write all the data to the CSV file
     read_guides_data() # re-reading data so its updated
     
+def delete_guide_data(id_to_delete:str):
+    '''
+    deletes guids line based on GuidesID
+    '''
+    for index, line in enumerate(guides_data): # enumerate lets me get the index and the line value
+        if line[0] == id_to_delete: # searching for the ID
+            del(guides_data[index])# we found the id so we delete this line
+            break # only delete the first instance of line
+    write_guides_data(guides_data) # since we deleted a line we need re-write all the data to the CSV file
+    read_guides_data() # re-reading data so its updated
+    
         
 # WE DONT NEED update_tour_data I MISSREAD THE TASK
 # def update_tour_data(id_to_update: str, index_to_update: int, value_to_add: str):
@@ -145,13 +156,25 @@ def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: st
 #             break # only delete the first instance of line
 #     write_tours_data(TOURS_DATA) # since we deleted a line we need re-write all the data to the CSV file
 #     read_tour_data() # re-reading data so its updated
-    
 
-#write_tours_data(TOURS_TEST_DATA)
-#write_guides_data(GUIDES_TEST_DATA)
+
+write_tours_data(TOURS_TEST_DATA)
+write_guides_data(GUIDES_TEST_DATA)  
+# innitial table reading 
 read_guides_data()
+read_tour_data()
+
+
+
 print(guides_data)
-update_guides_data("Guide7", 1, "Bob")
+input()
+update_guides_data("Guide7", 1, "Steve")
+print(guides_data)
+input()
+delete_guide_data("Guide7")
+print(guides_data)
+input()
+delete_guide_data("Guide72")
 print(guides_data)
 
 
