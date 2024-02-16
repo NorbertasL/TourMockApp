@@ -2,7 +2,7 @@ NOTE:Everything will be save to CSV file. It will act as our data storage.
 
 TODO: 
  - [ ] INSERT lines to:
-    - [-] Tours
+    - [x] Tours
 	- [ ] Guides
 	- [ ] Completed Walk
 

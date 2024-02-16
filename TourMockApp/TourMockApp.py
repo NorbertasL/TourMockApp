@@ -35,7 +35,7 @@ def write_tours_data(data: list[list[str]]):
         temp.append(",".join(elements)) # LINE DATA
         
         #fix for extra spaces
-        if temp[-1][-1:] != "\n":
+        if temp[-1][-1:] != "\n": #temp[-1] gives us the last line in the lise(the one we just added above) and the [-1:] check the last char of the line "\n", "\n" is 1 char NOT 2
             temp[-1]+="\n"
     try:
         with open(TOUR_DATA_PATH, "w") as file:
