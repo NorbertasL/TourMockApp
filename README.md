@@ -1,6 +1,11 @@
 NOTE:Everything will be save to CSV file. It will act as our data storage.
 
 TODO: 
+ - [ ] INSERT lines to:
+    - [ ] Tours
+	- [ ] Guides
+	- [ ] Completed Walk
+
  - [ ] WRITE to:
 	- [x] Tours
 	- [x] Guides
