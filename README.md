@@ -12,7 +12,7 @@ TODO:
 	- [ ] Completed Walks
 
 - [ ] UPDATE :
-	- [ ] Tours
+	- [x] Tours
 	- [ ] Guides
 	- [ ] Completed Walks
 

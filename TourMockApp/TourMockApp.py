@@ -35,11 +35,29 @@ def read_tour_data():
         print(ex)
         
 
-    
+def update_tour_data(id_to_update: str, index_to_update: int, value_to_add: str):
+    '''
+    Updates tour data
+    id_to_update = the unique id of the tour
+    index_to_update = the field u want to update 
+        0 = "TourID", 
+        1 = "Destination", 
+        2 = "Duration", 
+        3 = "Price per Person", 
+        4 = "Min # Walkers", 
+        5 = "Max # Walkers"
+    '''
+    for line in TOURS_DATA:
+        if line[0] == id_to_update: # searching for the ID
+            line[index_to_update] = value_to_add #setting the new value
+            break # only updating the first instance of line
 #testing write function
 #write_tours_data(TEST_DATA)
 
-#testing read function
+#testing update function
 read_tour_data()
-print(TOURS_DATA)
+print(TOURS_DATA) # printing before update
+
+update_tour_data("Tour2", 3, "10.00")
+print(TOURS_DATA) # printing after update
 
