@@ -276,37 +276,115 @@ def print_rows(data_list):
 def user_interface():
     def user_interface_tables():
         def interf_table_tours():
-            # View tours
-            # Add new tours
-            pass
+            while(True):
+                print("1: View all tour data")
+                print("2: Add new Tours")
+                print("3: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print_rows(tours_data)
+                elif(user_input == "2"):
+                    insert_tour_data()
+                    print_rows(tours_data)
+                elif(user_input == "3"):
+                    return
+                else:
+                    print("Unknown input!")
+                
         def interf_table_guides():
+            def update_guide_interface():
+                print_rows(guides_data)
+                guide_id = input("Enter GuideID you wish to update:")
+                
+                
+                # 0 = "GuideID", 
+                # 1 = "Name", 
+                # 2 = "Basic Rate(Hourly)", 
+                # 3 = "Rate per Walker"
+                try:
+                    field_index = int(input("Select field to edit 1 = name, 2 = Rate, 3 = Walk Rare"))
+                    if field_index in [1, 2 ,3]:
+                        user_value = input("Eenter new value: ") # WARNING value validity not checked
+                        update_guides_data(guide_id, field_index, user_value)
+                        print("Update Done!")
+                    else:
+                       print("Bad input! Nothing was Changed") 
+                except:
+                    print("Bad input! Nothing was Changed")
+                return # going back to previous menu
+               
+                    
+                
+                pass
+            def delete_guide_interface(): #TODO
+                pass
+            while(True):
+                print("1: View all Guide data")
+                print("2: Add new Guide")
+                print("3: Update Guide")
+                print("4: Delete Guide")
+                print("5: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print_rows(guides_data)
+                elif(user_input == "2"):
+                    insert_guide_data()
+                    print_rows(guides_data)
+                elif(user_input == "3"):
+                    update_guide_interface()
+                    print_rows(guides_data)
+                elif(user_input == "4"):
+                    delete_guide_interface()
+                    print_rows(guides_data)
+                elif(user_input == "5"):
+                    return
+                else:
+                    print("Unknown input!")
             # View Guides
             # Add new Guides
             # Delete Guides
             # Update Guides
             pass
         def interf_table_walks():
-            # View Walks
-            # Add new walks
-            pass
+            while(True):
+                print("1: View all walks data")
+                print("2: Add new Walk")
+                print("3: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print_rows(walks_data)
+                elif(user_input == "2"):
+                    insert_walks_data()
+                    print_rows(walks_data)
+                elif(user_input == "3"):
+                    return
+                else:
+                    print("Unknown input!")
         
-        print("1: For Tours")
-        print("2: For Guides")
-        print("3: For Walkss")
-        print("4: Go back in menu")
+        while(True):
+            print("1: For Tours")
+            print("2: For Guides")
+            print("3: For Walkss")
+            print("4: Go back in menu")
     
-        user_input = input("Selection:")
+            user_input = input("Selection:")
     
-        if(user_input == "1"): # keeping input as string and comparing to string
-            interf_table_tours()
-        elif(user_input == "2"):
-            interf_table_guides()
-        elif(user_input == "3"):
-            interf_table_walks()
-        elif(user_input == "4"):
-            return # will go back 1 to previous menu
-        else:
-            print("Unknown input!")
+            if(user_input == "1"): # keeping input as string and comparing to string
+                interf_table_tours()
+            elif(user_input == "2"):
+                interf_table_guides()
+            elif(user_input == "3"):
+                interf_table_walks()
+            elif(user_input == "4"):
+                return # will go back 1 to previous menu
+            else:
+                print("Unknown input!")
     def user_interface_calculations():
         pass
     
