@@ -2,12 +2,12 @@ NOTE:Everything will be save to CSV file. It will act as our data storage.
 
 TODO: 
  - [ ] WRITE to:
-	- [ ] Tours
+	- [x] Tours
 	- [ ] Guides
 	- [ ] Completed Walk
 
 - [ ] READ From:
-	- [ ] Tours
+	- [x] Tours
 	- [ ] Guides
 	- [ ] Completed Walks
 
