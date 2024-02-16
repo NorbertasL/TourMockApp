@@ -154,6 +154,19 @@ def insert_tour_data():
     tours_data.append(temp)
     write_tours_data(tours_data)#updating CSV
     
+def insert_guide_data():
+    print("insert_guide_data")
+    temp: list[str] = []
+    #DANGER , not doing data checking 
+    temp.append(input("GuideID:"))
+    temp.append(input("Name:"))
+    temp.append(input("Basic Rate(Hourly):"))
+    temp.append(input("Rate per Walker"))
+
+    
+    guides_data.append(temp)
+    write_guides_data(guides_data)#updating CSV
+    
     
 
 def update_guides_data(id_to_update: str, index_to_update: int, value_to_add: str):
@@ -229,13 +242,10 @@ write_walks_data(WALKS_TEST_DATA)
 # read_guides_data()
 # read_tour_data()
 
-print(tours_data)
-
-insert_tour_data()
-
-print(tours_data)
 print(guides_data)
-print(walks_data)
+insert_guide_data()
+print(guides_data)
+
 
 
 # print(guides_data)
