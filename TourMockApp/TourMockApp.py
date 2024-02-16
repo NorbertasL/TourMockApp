@@ -272,7 +272,60 @@ def make_dummy_data() -> bool:#a way to populate the datbles
 def print_rows(data_list):
     for data in data_list:
         print(data)
-
+        
+def user_interface():
+    def user_interface_tables():
+        def interf_table_tours():
+            # View tours
+            # Add new tours
+            pass
+        def interf_table_guides():
+            # View Guides
+            # Add new Guides
+            # Delete Guides
+            # Update Guides
+            pass
+        def interf_table_walks():
+            # View Walks
+            # Add new walks
+            pass
+        
+        print("1: For Tours")
+        print("2: For Guides")
+        print("3: For Walkss")
+        print("4: Go back in menu")
+    
+        user_input = input("Selection:")
+    
+        if(user_input == "1"): # keeping input as string and comparing to string
+            interf_table_tours()
+        elif(user_input == "2"):
+            interf_table_guides()
+        elif(user_input == "3"):
+            interf_table_walks()
+        elif(user_input == "4"):
+            return # will go back 1 to previous menu
+        else:
+            print("Unknown input!")
+    def user_interface_calculations():
+        pass
+    
+    while(True):
+        print("1: For Tables")
+        print("2: For Calulations")
+        print("3: To Exit")
+    
+        user_input = input("Selection:")
+    
+        if(user_input == "1"): # keeping input as string and comparing to string
+            user_interface_tables()
+        elif(user_input == "2"):
+            user_interface_calculations()
+        elif(user_input == "3"):# will break out of the user interface loop
+            return
+        else:
+            print("Unknown input!")
+        
 # if dumy data is generated it will auto read it in else we need to read it in ourselfs
 if(not make_dummy_data()):
     #Reading in data at the starts
@@ -281,16 +334,9 @@ if(not make_dummy_data()):
     read_guides_data()
     read_walks_data()
 
+user_interface()
 
-
-
-print("#"*20)
-print_rows(tours_data)
-print("-"*20)
-print_rows(guides_data)
-print("-"*20)
-print_rows(walks_data)
-
+print("Application is finished!!!")
 
 
 

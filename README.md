@@ -1,30 +1,30 @@
 NOTE:Everything will be save to CSV file. It will act as our data storage.
 
 TODO: 
- - [ ] INSERT lines to:
+ - [x] INSERT lines to:
     - [x] Tours
 	- [x] Guides
 	- [x] Completed Walk
 
- - [ ] WRITE to:
+ - [x] WRITE to:
 	- [x] Tours
 	- [x] Guides
 	- [x] Completed Walk
 
-- [ ] READ From:
+- [x] READ From:
 	- [x] Tours
 	- [x] Guides
 	- [x] Completed Walks
 
-- [ ] UPDATE :
+- [x] UPDATE :
 	- [x] Tours
 	- [x] Guides
 
-- [ ] DELETE from :
+- [x] DELETE from :
 	- [x] Tours
 	- [x] Guides
 
-- [ ] Create dummy data
+- [x] Create dummy data
 
 - [ ] CALCULATE:
     - [ ] Pay earned by each guide per tour
