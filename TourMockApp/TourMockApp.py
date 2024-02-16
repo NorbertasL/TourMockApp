@@ -3,22 +3,15 @@
 
 TOUR_DATA_PATH: str = "Tours.csv"
 TOUR_HEADERS:list[str] = ["TourID", "Destination", "Duration", "Price per Person", "Min # Walkers", "Max # Walkers"]
-#Dummy Data
-TOURS_TEST_DATA = [["Tour1", "Sugarloaf", "3", "10.00", "5", "12"], ["Tour2", "Balalaika", "2", "8.00", "6", "14"]]
 tours_data = []
 
 GUIDES_DATA_PATH: str = "Guides.csv"
 GUIDES_HEADERS:list[str] = ["GuideID", "Name", "Basic Rate(Hourly)", "Rate per Walker"]
-#Dummy Data
-GUIDES_TEST_DATA = [["Guide7", "Barbara", "12.50", "1.25"], ["Guide72", "Eddie", "15.00", "2"]]
 guides_data = []
 
 WALKS_DATA_PATH: str = "Walks.csv"
 WALKS_HEADERS:list[str] = ["WalkID", "GuideID", "TourID", "# Walkers"]
-#Dummy Data
-WALKS_TEST_DATA = [["Walk23", "Guide71", "Tour1", "10"], ["Walk24", "Guide7", "Tour2", "8"]]
 walks_data = []
-
 
 
 
@@ -245,32 +238,61 @@ def delete_guide_data(id_to_delete:str):
 #     write_tours_data(TOURS_DATA) # since we deleted a line we need re-write all the data to the CSV file
 #     read_tour_data() # re-reading data so its updated
 
-#Generating dummy data
-write_tours_data(TOURS_TEST_DATA)
-write_guides_data(GUIDES_TEST_DATA)
-write_walks_data(WALKS_TEST_DATA)
+def make_dummy_data() -> bool:#a way to populate the datbles
+    WALKS_TEST_DATA = [["Walk20", "Guide71", "Tour1", "10"], 
+                       ["Walk21", "Guide72", "Tour3", "8"],
+                       ["Walk22", "Guide71", "Tour2", "13"],
+                       ["Walk23", "Guide73", "Tour2", "8"],
+                       ["Walk24", "Guide73", "Tour1", "12"],
+                       ["Walk25", "Guide72", "Tour2", "6"],
+                       ["Walk26", "Guide71", "Tour3", "18"],
+                       ["Walk27", "Guide71", "Tour1", "11"],
+                       ["Walk28", "Guide73", "Tour2", "8"],
+                       ["Walk29", "Guide73", "Tour2", "8"]]
+    
+    GUIDES_TEST_DATA = [["Guide73", "Barbara", "12.50", "1.25"], 
+                        ["Guide72", "Eddie", "15.00", "2"], 
+                        ["Guide71", "Bill", "14.80", "0.95"]]
+    
+    TOURS_TEST_DATA = [["Tour1", "Sugarloaf", "3", "10.00", "5", "12"], 
+                       ["Tour2", "Balalaika", "2", "8.00", "6", "14"], 
+                       ["Tour3", "Wahtever", "4", "16.00", "7", "18"]]
+    
+    user_input = input("Would you like to generate dummy data(y/n):")
+    if(user_input.upper() == "Y"):  
+        #Generating dummy data
+        write_tours_data(TOURS_TEST_DATA)
+        write_guides_data(GUIDES_TEST_DATA)
+        write_walks_data(WALKS_TEST_DATA)
+        print(f"{TOURS_TEST_DATA} tour data generated \n {GUIDES_TEST_DATA} guides data generated \n {WALKS_TEST_DATA} walks data generated")
+        return True
+    return False
+        
+        
+def print_rows(data_list):
+    for data in data_list:
+        print(data)
+
+# if dumy data is generated it will auto read it in else we need to read it in ourselfs
+if(not make_dummy_data()):
+    #Reading in data at the starts
+    print("Reading in existing data!")
+    read_tour_data()
+    read_guides_data()
+    read_walks_data()
 
 
 
-# innitial table reading 
-# read_guides_data()
-# read_tour_data()
 
-print(walks_data)
-insert_walks_data()
-print(walks_data)
+print("#"*20)
+print_rows(tours_data)
+print("-"*20)
+print_rows(guides_data)
+print("-"*20)
+print_rows(walks_data)
 
 
 
-# print(guides_data)
-# input()
-# update_guides_data("Guide7", 1, "Steve")
-# print(guides_data)
-# input()
-# delete_guide_data("Guide7")
-# print(guides_data)
-# input()
-# delete_guide_data("Guide72")
-# print(guides_data)
+
 
 

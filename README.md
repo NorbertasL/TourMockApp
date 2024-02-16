@@ -4,7 +4,7 @@ TODO:
  - [ ] INSERT lines to:
     - [x] Tours
 	- [x] Guides
-	- [-] Completed Walk
+	- [x] Completed Walk
 
  - [ ] WRITE to:
 	- [x] Tours
