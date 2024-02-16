@@ -3,7 +3,7 @@ NOTE:Everything will be save to CSV file. It will act as our data storage.
 TODO: 
  - [ ] WRITE to:
 	- [x] Tours
-	- [ ] Guides
+	- [x] Guides
 	- [ ] Completed Walk
 
 - [ ] READ From:

@@ -1,11 +1,22 @@
+#NOTE: We are ASSUMING all the ids are unique
+
 
 TOUR_DATA_PATH: str = "Tours.csv"
 TOUR_HEADERS:list[str] = ["TourID", "Destination", "Duration", "Price per Person", "Min # Walkers", "Max # Walkers"]
-
+#Dummy Data
+TOURS_TEST_DATA = [["Tour1", "Sugarloaf", "3", "10.00", "5", "12"], ["Tour2", "Balalaika", "2", "8.00", "6", "14"]]
 TOURS_DATA = []
 
+GUIDES_DATA_PATH: str = "Guides.csv"
+GUIDES_HEADERS:list[str] = ["GuideID", "Name", "Basic Rate(Hourly)", "Rate per Walker"]
 #Dummy Data
-TEST_DATA = [["Tour1", "Sugarloaf", "3", "10.00", "5", "12"], ["Tour2", "Balalaika", "2", "8.00", "6", "14"]]
+GUIDES_TEST_DATA = [["Guide7", "Barbara", "12.50", "1.25"], ["Guide72", "Eddie", "15.00", "2"]]
+GUIDES_DATA = []
+
+
+
+
+
 
 def write_tours_data(data: list[list[str]]):
     '''
@@ -26,6 +37,25 @@ def write_tours_data(data: list[list[str]]):
     except Exception as ex:
         print(ex)
         
+
+def write_guides_data(data: list[list[str]]):
+    '''
+    writes data(list of list with str elements) to CSV file+adds headers
+    '''
+    temp:list[str] = []
+    temp.append(",".join(GUIDES_HEADERS)+"\n") # HEADERS
+    for elements in data:
+        temp.append(",".join(elements)) # LINE DATA
+        
+        #fix for extra spaces
+        if(temp[-2:]) != "\n":
+            temp+="\n"
+    try:
+        with open(GUIDES_DATA_PATH, "w") as file:
+            file.writelines(temp)
+    except Exception as ex:
+        print(ex)
+ 
 def read_tour_data():
     '''
     will read all the data from Tours.CSV into memory
@@ -78,13 +108,7 @@ def delete_tour_data(id_to_delete:str):
     write_tours_data(TOURS_DATA) # since we deleted a line we need re-write all the data to the CSV file
     read_tour_data() # re-reading data so its updated
 
+#write_tours_data(TOURS_TEST_DATA)
+write_guides_data(GUIDES_TEST_DATA)
 
-#write_tours_data(TEST_DATA)
-
-#testing delete function
-read_tour_data()
-print(TOURS_DATA) # printing before update
-
-delete_tour_data("Tour1")
-print(TOURS_DATA) # printing after update
 
