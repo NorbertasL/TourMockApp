@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>73bdda30-71fb-480e-bb9f-ed4b5ecd042e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TourMockApp.py</StartupFile>
+    <StartupFile>TourMockAppSQL.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="TourMockApp.py" />
+    <Compile Include="TourMockAppSQL.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
