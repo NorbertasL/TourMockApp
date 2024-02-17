@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /TourMockApp/Tours.csv
 *.csv
+/TourMockApp/Test.db
