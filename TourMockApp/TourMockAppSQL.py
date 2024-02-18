@@ -77,7 +77,7 @@ def print_table(table_name:str, data:list):
     '''
     print(table_name.center(len(table_name)+2, " ").center(40, "#"))
     for line in data:        
-        print(line)
+        print('%-10s'*len(line) % tuple(line)) # %-10s = % starts the notation, - allight left, 10 the ele wil have to fit within 10 spaces, s = string
     print("#"*40)
     
     
