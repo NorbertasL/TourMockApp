@@ -76,9 +76,34 @@ def dummy_data_interface():
         else:
             print(f"{table} TABLE data DELETION FAILED!")
     
+    def tours_dummy_data():
+        add_row_to(TOURS_TABLE_NAME, {"destination": "Sugarloaf", "duration": 3, "price": 10.00, "min_walkers": 5, "max_walkers": 12})
+        add_row_to(TOURS_TABLE_NAME, {"destination": "Dananik", "duration": 2, "price": 8.50, "min_walkers": 3, "max_walkers": 10})
+        add_row_to(TOURS_TABLE_NAME, {"destination": "Sun Cliff", "duration": 2, "price": 11.00, "min_walkers": 4, "max_walkers": 11})
+        
+    def guides_dummydata():
+         add_row_to(GUIDES_TABLE_NAME, {"name": "Barbara", "hour_rate": 12.50, "rate_per_walker": 1.25})
+         add_row_to(GUIDES_TABLE_NAME, {"name": "Eddie", "hour_rate": 10.50, "rate_per_walker": 1.50})
+         add_row_to(GUIDES_TABLE_NAME, {"name": "Tom", "hour_rate": 12.00, "rate_per_walker": 0.95})
+         add_row_to(GUIDES_TABLE_NAME, {"name": "Bob", "hour_rate": 14.20, "rate_per_walker": 1.45})
+
     def walks_dummy_data():
-        add_row_to(WALKS_TABLE_NAME, {"guide_ID":5, "tour_ID":7, "walker_count":10})
-        add_row_to(WALKS_TABLE_NAME, {"guide_ID":5, "tour_ID":7, "walker_count":20})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":1, "tour_ID":1, "walker_count":10})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":2, "tour_ID":1, "walker_count":6})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":3, "tour_ID":1, "walker_count":12})
+        
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":4, "tour_ID":2, "walker_count":3})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":2, "tour_ID":2, "walker_count":7})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":3, "tour_ID":2, "walker_count":5})
+        
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":4, "tour_ID":3, "walker_count":5})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":1, "tour_ID":3, "walker_count":7})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":3, "tour_ID":3, "walker_count":5})
+        
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":4, "tour_ID":1, "walker_count":10})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":1, "tour_ID":2, "walker_count":5})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":2, "tour_ID":3, "walker_count":11})
+        add_row_to(WALKS_TABLE_NAME, {"guide_ID":3, "tour_ID":3, "walker_count":10})
        
         
     if input("Remake Database with TEST DATA?(Y/N)")[0].upper() == "Y":
@@ -88,7 +113,8 @@ def dummy_data_interface():
         delete_table_data("walks")
 
         print("Generating new data...")
-       
+        tours_dummy_data()
+        guides_dummydata()
         walks_dummy_data()
     print("#"*20)
         
