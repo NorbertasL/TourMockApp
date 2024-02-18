@@ -8,21 +8,23 @@ TOURS_TABLE_NAME:str = "tours"
 GUIDES_TABLE_NAME:str = "guides"
 WALKS_TABLE_NAME:str = "walks"
 
-def execure_sql_querry(sql_statment:str, write_querry:bool = False, values:tuple = ()) -> list | bool: # list | bool Python 3.10+ Hinting
-    return_value: list | bool = False 
+def execure_sql_querry(sql_statment:str, write_querry:bool = False, values:tuple = ()) -> tuple[bool, list]: # list | bool Python 3.10+ Hinting
+    successful: bool = False 
+    return_list: list = []
     try:
         with sqlite3.connect(DB_PATH) as conn:
             cursor = conn.cursor()
-            return_value = cursor.execute(sql_statment, values).rowcount > 0 #rowcount = affected rows
+            successful = cursor.execute(sql_statment, values).rowcount > 0 #rowcount = affected rows
             if write_querry:
                 conn.commit()#commit is only needed for write querries
-                return_value = True # No error so SQL querry was successful 
+                successful = True # No error so SQL querry was successful 
             else:
-                return_value = cursor.fetchall() # fetchall is only needed if we are retiving data, write_querry == False
+                successful = True
+                return_list = cursor.fetchall() # fetchall is only needed if we are retiving data, write_querry == False
     except Exception as ex:
         print(ex)
     finally:
-        return return_value # using finally block to make sure something is always returned
+        return successful, return_list # using finally block to make sure something is always returned
     
 def create_tables():
     '''
@@ -65,8 +67,19 @@ def add_row_to(table:str, values:dict):
     else:
         print(f"FAILED to add {values} data to {table}")
     
-    
+def get_all_data_from(table: str) -> tuple[bool, list]:
+    sql_querry:str = f"SELECT * FROM {table};"
+    return execure_sql_querry(sql_querry)
 
+def print_table(table_name:str, data:list):
+    '''
+    fancy way of printing lists :D
+    '''
+    print(table_name.center(len(table_name)+2, " ").center(40, "#"))
+    for line in data:        
+        print(line)
+    print("#"*40)
+    
     
 def dummy_data_interface():
     def delete_table_data(table: str):
@@ -122,14 +135,18 @@ def user_interface():
     def user_interface_tables():
         def interf_table_tours():
             while(True):
-                print("1: View all tour data TODO")
+                print("1: View all tour data")
                 print("2: Add new Tours TODO")
                 print("3: Go back!")
                 
                 user_input = input("Selection:")
     
                 if(user_input == "1"): # keeping input as string and comparing to string
-                    print("NOT DONE!") #TODO
+                    state, data = get_all_data_from(TOURS_TABLE_NAME)
+                    if(state and  len(data) > 0):
+                        print_table("Tours", data)                     
+                    else:
+                        print("NO Tour DATA was FOUND!!!!")
                 elif(user_input == "2"):
                     print("NOT DONE!") #TODO
                 elif(user_input == "3"):
@@ -167,7 +184,7 @@ def user_interface():
             
             
             while(True):
-                print("1: View all Guide data TODO")
+                print("1: View all Guide data")
                 print("2: Add new Guide TODO")
                 print("3: Update Guide TODO")
                 print("4: Delete Guide TODO")
@@ -176,7 +193,11 @@ def user_interface():
                 user_input = input("Selection:")
     
                 if(user_input == "1"): # keeping input as string and comparing to string
-                    print("NOT DONE!") #TODO
+                    state, data = get_all_data_from(GUIDES_TABLE_NAME)
+                    if(state and  len(data) > 0):
+                        print_table("Guides", data)                     
+                    else:
+                        print("NO Guides DATA was FOUND!!!!")
                 elif(user_input == "2"):
                     print("NOT DONE!") #TODO
                 elif(user_input == "3"):
@@ -192,14 +213,18 @@ def user_interface():
 
         def interf_table_walks():
             while(True):
-                print("1: View all walks data TODO!")
+                print("1: View all walks data!")
                 print("2: Add new Walk TODO")
                 print("3: Go back!")
                 
                 user_input = input("Selection:")
     
                 if(user_input == "1"): # keeping input as string and comparing to string
-                    print("NOT DONE!") #TODO
+                    state, data = get_all_data_from(WALKS_TABLE_NAME)
+                    if(state and  len(data) > 0):
+                        print_table("Walks", data)                     
+                    else:
+                        print("NO Walks DATA was FOUND!!!!")
                 elif(user_input == "2"):
                     print("NOT DONE!") #TODO
                 elif(user_input == "3"):
@@ -246,7 +271,7 @@ def user_interface():
         
 
 if TEST_MODE:
-    create_tables()
+    #create_tables()
     dummy_data_interface()
 
 user_interface()
