@@ -118,8 +118,130 @@ def dummy_data_interface():
         walks_dummy_data()
     print("#"*20)
         
-def user_interface():#TODO
-    pass 
+def user_interface():
+    def user_interface_tables():
+        def interf_table_tours():
+            while(True):
+                print("1: View all tour data TODO")
+                print("2: Add new Tours TODO")
+                print("3: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print("NOT DONE!") #TODO
+                elif(user_input == "2"):
+                    print("NOT DONE!") #TODO
+                elif(user_input == "3"):
+                    return
+                else:
+                    print("Unknown input!")
+                
+        def interf_table_guides():
+            def update_guide_interface():
+                print("NOT DONE!") #TODO
+                return
+                #guide_id = input("Enter GuideID you wish to update:")
+                
+                
+                # 0 = "GuideID", 
+                # 1 = "Name", 
+                # 2 = "Basic Rate(Hourly)", 
+                # 3 = "Rate per Walker"
+                try:
+                    field_index = int(input("Select field to edit 1 = name, 2 = Rate, 3 = Walk Rare"))
+                    if field_index in [1, 2 ,3]:
+                        user_value = input("Eenter new value: ") # WARNING value validity not checked
+                        print("NOT DONE!") #TODO
+                        print("Update Done!")
+                    else:
+                       print("Bad input! Nothing was Changed") 
+                except:
+                    print("Bad input! Nothing was Changed")
+                return # going back to previous menu
+               
+            def delete_guide_interface():
+                #
+                print("NOT DONE!") #TODO
+                return # going back
+            
+            
+            while(True):
+                print("1: View all Guide data TODO")
+                print("2: Add new Guide TODO")
+                print("3: Update Guide TODO")
+                print("4: Delete Guide TODO")
+                print("5: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print("NOT DONE!") #TODO
+                elif(user_input == "2"):
+                    print("NOT DONE!") #TODO
+                elif(user_input == "3"):
+                    update_guide_interface()
+                    print("NOT DONE!") #TODO
+                elif(user_input == "4"):
+                    print("NOT DONE!") #TODO
+                    delete_guide_interface()
+                elif(user_input == "5"):
+                    return
+                else:
+                    print("Unknown input!")
+
+        def interf_table_walks():
+            while(True):
+                print("1: View all walks data TODO!")
+                print("2: Add new Walk TODO")
+                print("3: Go back!")
+                
+                user_input = input("Selection:")
+    
+                if(user_input == "1"): # keeping input as string and comparing to string
+                    print("NOT DONE!") #TODO
+                elif(user_input == "2"):
+                    print("NOT DONE!") #TODO
+                elif(user_input == "3"):
+                    return
+                else:
+                    print("Unknown input!")
+        
+        while(True):
+            print("1: For Tours")
+            print("2: For Guides")
+            print("3: For Walkss")
+            print("4: Go back in menu")
+    
+            user_input = input("Selection:")
+    
+            if(user_input == "1"): # keeping input as string and comparing to string
+                interf_table_tours()
+            elif(user_input == "2"):
+                interf_table_guides()
+            elif(user_input == "3"):
+                interf_table_walks()
+            elif(user_input == "4"):
+                return # will go back 1 to previous menu
+            else:
+                print("Unknown input!")
+   
+    
+    while(True):
+        print("1: For Tables")
+        print("2: For Calulations TODO!")
+        print("3: To Exit")
+    
+        user_input = input("Selection:")
+    
+        if(user_input == "1"): # keeping input as string and comparing to string
+            user_interface_tables()
+        elif(user_input == "2"):
+            print("NOT DONE!") #TODO
+        elif(user_input == "3"):# will break out of the user interface loop
+            return
+        else:
+            print("Unknown input!")
         
         
 
